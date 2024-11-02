@@ -51,7 +51,7 @@
             // selectDestinationLabel
             // 
             selectDestinationLabel.AutoSize = true;
-            selectDestinationLabel.Location = new Point(14, 81);
+            selectDestinationLabel.Location = new Point(14, 77);
             selectDestinationLabel.Margin = new Padding(4, 0, 4, 4);
             selectDestinationLabel.Name = "selectDestinationLabel";
             selectDestinationLabel.Size = new Size(98, 15);
@@ -60,18 +60,18 @@
             // 
             // selectDestinationTextBox
             // 
-            selectDestinationTextBox.Location = new Point(14, 110);
-            selectDestinationTextBox.Margin = new Padding(4, 4, 4, 10);
+            selectDestinationTextBox.Location = new Point(13, 96);
+            selectDestinationTextBox.Margin = new Padding(4, 0, 4, 10);
             selectDestinationTextBox.Name = "selectDestinationTextBox";
             selectDestinationTextBox.Size = new Size(345, 23);
             selectDestinationTextBox.TabIndex = 11;
             // 
             // selectDestinationButton
             // 
-            selectDestinationButton.Location = new Point(367, 110);
+            selectDestinationButton.Location = new Point(366, 96);
             selectDestinationButton.Margin = new Padding(4, 4, 4, 10);
             selectDestinationButton.Name = "selectDestinationButton";
-            selectDestinationButton.Size = new Size(28, 29);
+            selectDestinationButton.Size = new Size(28, 23);
             selectDestinationButton.TabIndex = 12;
             selectDestinationButton.Text = "...";
             selectDestinationButton.UseVisualStyleBackColor = true;
@@ -88,18 +88,18 @@
             // 
             // selectFolderTextBox
             // 
-            selectFolderTextBox.Location = new Point(14, 42);
-            selectFolderTextBox.Margin = new Padding(4, 4, 4, 10);
+            selectFolderTextBox.Location = new Point(14, 32);
+            selectFolderTextBox.Margin = new Padding(4, 0, 4, 10);
             selectFolderTextBox.Name = "selectFolderTextBox";
             selectFolderTextBox.Size = new Size(345, 23);
             selectFolderTextBox.TabIndex = 8;
             // 
             // selectFolderButton
             // 
-            selectFolderButton.Location = new Point(367, 42);
+            selectFolderButton.Location = new Point(367, 32);
             selectFolderButton.Margin = new Padding(4, 4, 4, 10);
             selectFolderButton.Name = "selectFolderButton";
-            selectFolderButton.Size = new Size(28, 29);
+            selectFolderButton.Size = new Size(28, 23);
             selectFolderButton.TabIndex = 9;
             selectFolderButton.Text = "...";
             selectFolderButton.UseVisualStyleBackColor = true;
