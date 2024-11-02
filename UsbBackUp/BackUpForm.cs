@@ -1,11 +1,21 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
 namespace UsbBackUp
 {
-    public partial class Form1 : Form
+    public partial class BackUpForm : Form
     {
         private string _selectedFolderPath;
         private string _selectedDestinationPath;
 
-        public Form1()
+        public BackUpForm()
         {
             InitializeComponent();
 
@@ -36,6 +46,5 @@ namespace UsbBackUp
                 selectDestinationTextBox.Text = _selectedDestinationPath;
             }
         }
-
     }
 }
