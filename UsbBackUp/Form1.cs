@@ -18,6 +18,7 @@ namespace UsbBackUp
             selectDestinationButton.Click += SelectDestinationButton_Click;
             selectDestinationTextBox.ReadOnly = true;
         }
+
         private void SelectFolderButton_Click(object? sender, EventArgs e)
         {
             if (selectFolderDialog.ShowDialog() == DialogResult.OK)
