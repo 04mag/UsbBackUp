@@ -118,6 +118,7 @@
             Controls.Add(selectFolderButton);
             FormBorderStyle = FormBorderStyle.FixedToolWindow;
             Name = "BackUpForm";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "USB Backup";
             ResumeLayout(false);
             PerformLayout();
