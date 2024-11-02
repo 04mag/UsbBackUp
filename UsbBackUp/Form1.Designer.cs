@@ -36,6 +36,7 @@
             selectDestinationTextBox = new TextBox();
             selectDestinationButton = new Button();
             selectDestinationDialog = new FolderBrowserDialog();
+            backupButton = new Button();
             SuspendLayout();
             // 
             // selectFolderButton
@@ -94,11 +95,21 @@
             selectDestinationButton.Text = "...";
             selectDestinationButton.UseVisualStyleBackColor = true;
             // 
+            // backupButton
+            // 
+            backupButton.Location = new Point(147, 153);
+            backupButton.Name = "backupButton";
+            backupButton.Size = new Size(116, 46);
+            backupButton.TabIndex = 6;
+            backupButton.Text = "Backup";
+            backupButton.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(9F, 21F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(409, 347);
+            ClientSize = new Size(409, 216);
+            Controls.Add(backupButton);
             Controls.Add(selectDestinationLabel);
             Controls.Add(selectDestinationTextBox);
             Controls.Add(selectDestinationButton);
@@ -124,5 +135,6 @@
         private TextBox selectDestinationTextBox;
         private Button selectDestinationButton;
         private FolderBrowserDialog selectDestinationDialog;
+        private Button backupButton;
     }
 }
