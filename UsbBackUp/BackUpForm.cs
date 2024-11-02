@@ -60,6 +60,13 @@ namespace UsbBackUp
                 return;
             }
 
+            //Tjekker om valgte mappe og destinationsmappe er på samme drev
+            if (Environment.CurrentDirectory[0] == _selectedDestinationPath[0])
+            {
+                MessageBox.Show("You can't backup to the same drive as the source folder");
+                return;
+            }
+
             //Henter serie nummeret på drevet som backupen sidst blev lavet på
             string? prevDriveSerial = AppConfigHelper.GetSetting("PrevDriveSerial");
 
