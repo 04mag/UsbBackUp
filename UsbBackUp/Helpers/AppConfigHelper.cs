@@ -9,12 +9,12 @@ namespace UsbBackUp.Helpers
 {
     public static class AppConfigHelper
     {
-        private static string? GetSetting(string key)
+        public static string? GetSetting(string key)
         {
             return ConfigurationManager.AppSettings[key];
         }
 
-        private static void SetSetting(string key, string value)
+        public static void SetSetting(string key, string value)
         {
             Configuration configuration = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
             configuration.AppSettings.Settings[key].Value = value;
