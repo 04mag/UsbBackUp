@@ -71,7 +71,7 @@ namespace UsbBackUp
             string? prevDriveSerial = AppConfigHelper.GetSetting("PrevDriveSerial");
 
             //Opretter variabel til at gemme resultatet af backup
-            string[] result;
+            string? result;
 
             //Tjekker om der er et serie nummer på drevet som backupen sidst blev lavet på
             if (prevDriveSerial != null)
@@ -87,10 +87,10 @@ namespace UsbBackUp
             if (result != null)
             {
                 //Gemmer serie nummeret på drevet som backupen er lavet på
-                AppConfigHelper.SetSetting("PrevDriveSerial", result[0]);
+                AppConfigHelper.SetSetting("PrevDriveSerial", result);
 
                 //Viser resultatet af backuppen
-                MessageBox.Show(result[1]);
+                MessageBox.Show("Backup gennemført!");
             }
         }
 
@@ -118,7 +118,7 @@ namespace UsbBackUp
             }
         }
 
-        private string[]? MakeBackup(string sourcePath, string destinationPath, string prevSerial)
+        private string? MakeBackup(string sourcePath, string destinationPath, string prevSerial)
         {
             //Finder stien til Backup.bat filen som er gemt i projektet
             string projectDirectory = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName;
@@ -169,7 +169,7 @@ namespace UsbBackUp
             }
 
             //Returnerer resultat
-            return resultat;
+            return resultat[0];
         }
     }
 }
