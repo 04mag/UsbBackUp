@@ -60,8 +60,31 @@ namespace UsbBackUp
                 return;
             }
 
-            MakeBackup(_selectedFolderPath, _selectedDestinationPath, "");
+            //Henter serie nummeret på drevet som backupen sidst blev lavet på
+            string? prevDriveSerial = AppConfigHelper.GetSetting("PrevDriveSerial");
 
+            //Opretter variabel til at gemme resultatet af backup
+            string[] result;
+
+            //Tjekker om der er et serie nummer på drevet som backupen sidst blev lavet på
+            if (prevDriveSerial != null)
+            {
+                result = MakeBackup(_selectedFolderPath, _selectedDestinationPath, prevDriveSerial);
+            }
+            else
+            {
+                result = MakeBackup(_selectedFolderPath, _selectedDestinationPath, "");
+            }
+
+            //Tjekker om resultatet er null
+            if (result != null)
+            {
+                //Gemmer serie nummeret på drevet som backupen er lavet på
+                AppConfigHelper.SetSetting("PrevDriveSerial", result[0]);
+
+                //Viser resultatet af backuppen
+                MessageBox.Show(result[1]);
+            }
         }
 
         private void SelectFolderButton_Click(object? sender, EventArgs e)
@@ -88,7 +111,7 @@ namespace UsbBackUp
             }
         }
 
-        private string[] MakeBackup(string sourcePath, string destinationPath, string prevSerial)
+        private string[]? MakeBackup(string sourcePath, string destinationPath, string prevSerial)
         {
             //Finder stien til Backup.bat filen som er gemt i projektet
             string projectDirectory = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName;
@@ -98,28 +121,32 @@ namespace UsbBackUp
             ProcessStartInfo psi = new ProcessStartInfo
             {
                 FileName = BackUpCMDPath,
-                Arguments = sourcePath + " " + destinationPath + "" + prevSerial,
+                Arguments = sourcePath + " " + destinationPath + " " + prevSerial,
                 RedirectStandardOutput = true,
                 UseShellExecute = false,
-                CreateNoWindow = false
+                CreateNoWindow = true
             };
 
-            //Starter processen
-            Process process = Process.Start(psi);
-
-            //Venter på at processen er færdig
-            process.WaitForExit();
-
-
-            //Tjekker om processen er kørt uden fejl
-            if (process.ExitCode != 0)
+            Process process;
+            try
             {
-                MessageBox.Show("Ukendt fejl ved kopiering. Prøv igen!");
+                //Starter processen
+                process = Process.Start(psi);
+
+                //Venter på at processen er færdig
+                process.WaitForExit();
             }
+            catch
+            {
+                return null;
+            }
+
             //Tjekker om processen rammer fejl for at bruge drev med samme serie nummer som sidst
             if (process.ExitCode == 1)
             {
                 MessageBox.Show("Du kan ikke oprette en backup på samme drev som sidst!");
+
+                return null;
             }
 
             //Læser resultat fra output og fjerner \n fra enden af output
