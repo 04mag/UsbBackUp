@@ -145,6 +145,7 @@ namespace UsbBackUp
             }
             catch
             {
+                MessageBox.Show("Der skete en fejl ved start af backup. Stien til .bat filen er måske ændret?");
                 return null;
             }
 
